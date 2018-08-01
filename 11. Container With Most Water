@@ -1,0 +1,33 @@
+时间复杂度为n
+class Solution:
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        i = 0
+        j = len(height)
+        biggest = 0
+        while i != j:
+            if height[i] <= height[j-1]:
+                number = height[i]*(j-i-1)
+                if number >= biggest:
+                    biggest = number
+                i = i+1
+            else:
+                number = height[j-1]*(j-i-1)
+                if number >= biggest:
+                    biggest = number
+                j = j-1
+        return biggest
+
+时间复杂度为n²
+list = []
+for i in range(len(heigh)):
+	for j in range(i,len(heigh)):
+		if heigh[i] <= heigh[j]:
+			list.append(heigh[i]*(j-i))
+		else:
+			list.append(heigh[j]*(j-i))
+# ~ print(list)
+print(max(list))
